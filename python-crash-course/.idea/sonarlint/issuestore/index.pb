@@ -1,3 +1,0 @@
-
-;
-exercise.py,8/9/89b3d459bf30a1b780134a85cc56fb07b68e326c
