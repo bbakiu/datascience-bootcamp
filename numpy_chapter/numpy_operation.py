@@ -8,4 +8,7 @@ print(arr * arr)
 
 print(arr + 100)
 
-print(arr/arr)
+print(arr / arr)
+
+print(np.sqrt(arr))
+print(np.exp(arr))
