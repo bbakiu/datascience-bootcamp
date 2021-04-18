@@ -24,3 +24,16 @@ print(arr_2d[2, 0])
 print(arr_2d[2][0])
 
 print(arr_2d[:2, 1:])
+
+# Conditional array
+arr_1d = np.arange(1, 11)
+
+print(arr_1d > 5)
+
+bool_arr = arr_1d > 5
+
+print(arr_1d[bool_arr])
+
+print(arr_1d[arr_1d > 5])
+
+print(arr_1d[arr_1d < 5])
