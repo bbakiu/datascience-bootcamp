@@ -52,5 +52,5 @@ print(mat.sum())
 # 17
 print(mat.std())
 
-#18
+# 18
 print(mat.sum(axis=0))
