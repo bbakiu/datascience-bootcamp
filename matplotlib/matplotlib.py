@@ -37,3 +37,14 @@ axes2 = fig.add_axes([0.2, 0.6, 0.4, 0.3])
 axes1.plot(x, y)
 axes2.plot(y, x)
 plt.show()
+
+#### Part 2
+
+fig, axes = plt.subplots(nrows=1, ncols=2)
+# # axes.plot(x,y)
+for current_ax in axes:
+    current_ax.plot(x, y)
+
+axes[0].plot(x, y)
+axes[1].plot(y, x)
+plt.show()
