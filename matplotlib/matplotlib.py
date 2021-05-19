@@ -42,9 +42,18 @@ plt.show()
 
 fig, axes = plt.subplots(nrows=1, ncols=2)
 # # axes.plot(x,y)
-for current_ax in axes:
-    current_ax.plot(x, y)
+# for current_ax in axes:
+#     current_ax.plot(x, y)
 
 axes[0].plot(x, y)
 axes[1].plot(y, x)
 plt.show()
+
+# fig = plt.figure(figsize=(8, 2), dpi=100)
+fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(4, 2))
+axes[0].plot(x, y)
+axes[1].plot(y, x)
+plt.tight_layout()
+plt.show()
+
+fig.savefig('my_pic.png')
