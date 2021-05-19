@@ -57,3 +57,11 @@ plt.tight_layout()
 plt.show()
 
 fig.savefig('my_pic.png')
+
+fig = plt.figure()
+ax = fig.add_axes([0, 0, 1, 1])
+ax.plot(x, x ** 2, label='X Squared')
+ax.plot(x, x ** 3, label='X Cubed')
+
+ax.legend(loc='best')
+plt.show()
