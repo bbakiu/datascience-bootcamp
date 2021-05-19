@@ -65,3 +65,10 @@ ax.plot(x, x ** 3, label='X Cubed')
 
 ax.legend(loc='best')
 plt.show()
+
+fig = plt.figure()
+ax = fig.add_axes([0, 0, 1, 1])
+# ax.plot(x, y, color='orange', linewidth=5, alpha=0.2 ) #RGB Hex Code
+ax.plot(x, y, color='orange', linewidth=5, linestyle='--', marker='o') #RGB Hex Code
+
+plt.show()
