@@ -69,6 +69,8 @@ plt.show()
 fig = plt.figure()
 ax = fig.add_axes([0, 0, 1, 1])
 # ax.plot(x, y, color='orange', linewidth=5, alpha=0.2 ) #RGB Hex Code
-ax.plot(x, y, color='orange', linewidth=5, linestyle='--', marker='o') #RGB Hex Code
+ax.plot(x, y, color='orange', linewidth=5, linestyle='--', marker='o')  # RGB Hex Code
 
+ax.set_xlim([0, 1])
+ax.set_ylim([0, 2])
 plt.show()
