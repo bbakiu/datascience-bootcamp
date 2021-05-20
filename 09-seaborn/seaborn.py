@@ -6,5 +6,13 @@ tips = sns.load_dataset('tips')
 print(tips.head())
 
 sns.distplot(tips['total_bill'])
-sns.jointplot(x='total_bill', y='tip', data=tips, kind='reg')
 plt.show()
+sns.jointplot(x='total_bill', y='tip', data=tips, kind='kde')
+plt.show()
+sns.pairplot(tips, hue="sex", palette='coolwarm')
+
+plt.show()
+sns.rugplot(tips['total_bill'])
+plt.show()
+
+
