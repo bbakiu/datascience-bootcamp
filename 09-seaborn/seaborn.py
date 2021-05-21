@@ -34,3 +34,7 @@ plt.show()
 
 sns.swarmplot(x='day', y='total_bill', data=tips)
 plt.show()
+
+
+sns.factorplot(x='day', y='total_bill', data=tips, kind='bar')
+plt.show()
