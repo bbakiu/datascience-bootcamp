@@ -38,7 +38,10 @@ plt.show()
 df3 = pd.DataFrame({'x': [1, 2, 3, 4, 5], 'y': [10, 20, 30, 40, 50], 'y': [500, 400, 300, 200, 100]})
 
 print(df3)
-df3.iplot(kind='surface')
+df3.iplot(kind='surface', colorscale='rdylbu')
+plt.show()
+
+df['A'].iplot(kind='hist', bins=25)
 plt.show()
 
 
