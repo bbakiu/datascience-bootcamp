@@ -40,3 +40,9 @@ plt.show()
 
 sns.countplot(x='month', data=df, hue='reason')
 plt.show()
+
+byMonth = df.groupby(['month']).count()
+print(byMonth.head())
+
+byMonth['twp'].plot()
+plt.show()
