@@ -74,8 +74,8 @@ plt.show()
 dayMonth = df.groupby(by=['dayOfWeek', 'month']).count()['reason'].unstack()
 print(dayMonth.head())
 
-sns.heatmap(data=dayMonth, cmap='coolwarm')
+sns.heatmap(data=dayMonth, cmap='viridis')
 plt.show()
 
-sns.clustermap(dayMonth, cmap='coolwarm', standard_scale=1)
+sns.clustermap(dayMonth, cmap='viridis')
 plt.show()
