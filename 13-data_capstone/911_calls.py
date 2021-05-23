@@ -61,3 +61,21 @@ df[df['reason'] == 'EMS'].groupby('date').count()['twp'].plot()
 plt.title('EMS')
 plt.tight_layout()
 plt.show()
+print('============')
+dayHour = df.groupby(by=['dayOfWeek', 'hour']).count()['reason'].unstack()
+print(dayHour.head())
+
+sns.heatmap(data=dayHour, cmap='coolwarm')
+plt.show()
+
+sns.clustermap(dayHour, cmap='coolwarm', standard_scale=1)
+plt.show()
+
+dayMonth = df.groupby(by=['dayOfWeek', 'month']).count()['reason'].unstack()
+print(dayMonth.head())
+
+sns.heatmap(data=dayMonth, cmap='coolwarm')
+plt.show()
+
+sns.clustermap(dayMonth, cmap='coolwarm', standard_scale=1)
+plt.show()
