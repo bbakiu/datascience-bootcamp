@@ -67,6 +67,5 @@ plt.show()
 bank_stocks.xs(key='Close', axis=1, level='Stock Info').plot()
 plt.show()
 
-
-bank_stocks.xs(key='Close',axis=1,level='Stock Info').plot()
+bank_stocks.xs(key='Close', axis=1, level='Stock Info').plot()
 plt.show()
