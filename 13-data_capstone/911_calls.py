@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas
 import pandas as pd
-import numpy as np
 
 import seaborn as sns
 
@@ -14,6 +13,7 @@ print(df['zip'].value_counts().head(5))
 print(df['twp'].value_counts().head(5))
 
 print(df['title'].nunique())
+
 
 def get_reason(title):
     ch = ':'
@@ -45,4 +45,19 @@ byMonth = df.groupby(['month']).count()
 print(byMonth.head())
 
 byMonth['twp'].plot()
+plt.show()
+
+sns.lmplot(x='month', y='twp', data=byMonth.reset_index())
+plt.show()
+df['date'] = df['timeStamp'].apply(lambda x: x.date())
+
+byDate = df.groupby(['date']).count()
+print(byDate.head())
+
+byDate['twp'].plot()
+plt.show()
+
+df[df['reason'] == 'EMS'].groupby('date').count()['twp'].plot()
+plt.title('EMS')
+plt.tight_layout()
 plt.show()
