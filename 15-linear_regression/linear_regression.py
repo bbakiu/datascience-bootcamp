@@ -1,9 +1,10 @@
-import  pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import  seaborn as sns
-from sklearn.model_selection import train_test_split
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from sklearn import metrics
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 df = pd.read_csv('USA_Housing.csv')
 
@@ -32,3 +33,16 @@ print(lm.intercept_)
 print(lm.coef_)
 coeff = pd.DataFrame(lm.coef_, X.columns, columns=['Coefficients'])
 print(coeff)
+
+predictions = lm.predict(X_test)
+print(predictions)
+
+plt.scatter(y_test, predictions)
+plt.show()
+
+sns.displot((y_test-predictions))
+plt.show()
+
+print(metrics.mean_absolute_error(y_test, predictions))
+print(metrics.mean_squared_error(y_test, predictions))
+print(np.sqrt(metrics.mean_squared_error(y_test, predictions)))
