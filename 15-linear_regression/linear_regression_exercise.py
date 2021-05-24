@@ -12,3 +12,19 @@ print(df.head())
 print(df.info())
 print(df.describe())
 print(df.columns)
+
+sns.jointplot(x='Time on Website', y='Yearly Amount Spent', data=df)
+plt.show()
+
+sns.jointplot(x='Time on App', y='Yearly Amount Spent', data=df)
+plt.show()
+
+sns.jointplot(x='Time on App', y='Length of Membership', data=df,kind="hex")
+plt.show()
+
+sns.pairplot(df)
+plt.show()
+
+sns.lmplot(x='Yearly Amount Spent', y='Length of Membership', data=df.reset_index())
+plt.show()
+
