@@ -28,8 +28,8 @@ X = df_feat
 y = df['TARGET CLASS']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=101)
 
-knn =KNeighborsClassifier(n_neighbors=3)
-knn.fit(X_train,y_train)
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_train, y_train)
 
 predictions = knn.predict(X_test)
 
@@ -44,12 +44,11 @@ for i in range(1, 40):
     error_rate.append(np.mean(predictions_i != y_test))
 
 print(error_rate)
-plt.plot(range(1, 40), error_rate, color='blue', marker='red')
+plt.plot(range(1, 40), error_rate, color='blue')
 plt.show()
 
-
-knn =KNeighborsClassifier(n_neighbors=30)
-knn.fit(X_train)
+knn = KNeighborsClassifier(n_neighbors=30)
+knn.fit(X_train, y_train)
 
 predictions = knn.predict(X_test)
 
