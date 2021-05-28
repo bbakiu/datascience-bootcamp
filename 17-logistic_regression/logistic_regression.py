@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
 
-train = pd.read_csv("titanic_train.csv")
+train = pd.read_csv("data/titanic_train.csv")
 print(train.head())
 print(train.info())
 

@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 
-df = pd.read_csv("Classified Data")
+df = pd.read_csv("data/Classified Data")
 
 print(df.head())
 print(df.info())

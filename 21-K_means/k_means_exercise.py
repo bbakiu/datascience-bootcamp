@@ -4,7 +4,7 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.metrics import confusion_matrix, classification_report
 
-df = pd.read_csv("College_Data", index_col=0)
+df = pd.read_csv("data/College_Data", index_col=0)
 
 print(df.head())
 print(df.info())

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-df3 = pd.read_csv('df3.csv')
+df3 = pd.read_csv('data/df3.csv')
 print(df3.head())
 
 df3.plot.scatter(x='a', y='b', c='red', s=50, figsize=(12, 3))

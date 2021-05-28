@@ -4,7 +4,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
-train = pd.read_csv('advertising.csv')
+train = pd.read_csv('data/advertising.csv')
 print(train.head())
 print(train.info)
 print(train.describe())

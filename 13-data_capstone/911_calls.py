@@ -6,7 +6,7 @@ import seaborn as sns
 
 sns.set_style('whitegrid')
 
-df = pandas.read_csv('911.csv')
+df = pandas.read_csv('data/911.csv')
 print(df.info())
 print(df.head())
 print(df['zip'].value_counts().head(5))

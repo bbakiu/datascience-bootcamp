@@ -6,7 +6,7 @@ from sklearn import metrics
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-df = pd.read_csv('USA_Housing.csv')
+df = pd.read_csv('data/USA_Housing.csv')
 
 print(df.head())
 print(df.info())

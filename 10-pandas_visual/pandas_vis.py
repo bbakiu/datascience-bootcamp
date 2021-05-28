@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 
 
-df1 = pd.read_csv('df1.csv', index_col=0)
-df2 = pd.read_csv('df2.csv')
+df1 = pd.read_csv('data/df1.csv', index_col=0)
+df2 = pd.read_csv('data/df2.csv')
 print(df1.head())
 print(df2.head())
 

@@ -6,7 +6,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 
-df = pd.read_csv('loan_data.csv')
+df = pd.read_csv('data/loan_data.csv')
 print(df.head())
 print(df.info())
 print(df.describe())

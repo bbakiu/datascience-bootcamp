@@ -6,7 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
 
-df = pd.read_csv('kyphosis.csv')
+df = pd.read_csv('data/kyphosis.csv')
 print(df.head())
 
 print(df.info())

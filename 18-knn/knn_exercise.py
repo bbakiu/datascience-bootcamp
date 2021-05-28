@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 
-df = pd.read_csv("KNN_Project_Data")
+df = pd.read_csv("data/KNN_Project_Data")
 
 print(df.head())
 print(df.info())

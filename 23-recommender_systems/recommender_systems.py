@@ -4,10 +4,10 @@ import seaborn as sns
 
 columns_name = ['user_id', 'item_id', 'rating', 'timestamp']
 
-df = pd.read_csv('u.data', sep='\t', names=columns_name)
+df = pd.read_csv('data/u.data', sep='\t', names=columns_name)
 print(df.head())
 
-movie_titles = pd.read_csv('Movie_Id_Titles')
+movie_titles = pd.read_csv('data/Movie_Id_Titles')
 
 print(movie_titles.head())
 
