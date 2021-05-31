@@ -3,8 +3,8 @@ import pandas as pd
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.layers import Dense
 from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 
 df = pd.read_csv("data/fake_reg.csv")
 
@@ -38,6 +38,7 @@ model.compile(optimizer='rmsprop', loss='mse')
 
 model.fit(x=X_train, y=y_train, epochs=250, verbose=3)
 
+model.save('data/model.h5')
 history = pd.DataFrame(model.history.history)
 
 history.plot()
