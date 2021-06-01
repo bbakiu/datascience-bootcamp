@@ -46,8 +46,20 @@ plt.figure(figsize=(12, 8))
 plt.show()
 
 sns.boxplot(x='waterfront', y='price', data=df)
+plt.show()
 
 df.drop('id', axis=1, inplace=True)
 df['date'] = pd.to_datetime(df['date'])
 df['year'] = df['date'].apply(lambda date: date.year)
 df['month'] = df['date'].apply(lambda date: date.month)
+
+sns.boxplot(x='month', y='price', data=df)
+plt.show()
+
+df.groupby('month').mean()['price'].plot()
+plt.show()
+
+df.drop('date', axis=1, inplace=True)
+
+
+
