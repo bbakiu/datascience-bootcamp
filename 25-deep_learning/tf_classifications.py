@@ -6,7 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras.callbacks import  EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping
 
 from sklearn.metrics import classification_report, confusion_matrix
 
