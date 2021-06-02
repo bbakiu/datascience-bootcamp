@@ -16,6 +16,7 @@ def feat_info(col_name):
 feat_info('mort_acc')
 
 df = pd.read_csv('data/lending_club_loan_two.csv')
+pd.DataFrame
 
 print(df.head())
 print(df.info())
@@ -37,4 +38,17 @@ plt.figure(figsize=(12, 12))
 sns.heatmap(num_df.corr(), annot=True, cmap='viridis')
 plt.show()
 
+feat_info('installment')
+feat_info('loan_amnt')
 
+sns.scatterplot(data=df, x='installment', y='loan_amnt')
+plt.show()
+
+
+sns.boxplot(data=df, x='loan_status', y='loan_amnt')
+plt.show()
+
+print(df.groupby('loan_status')['loan_amnt'].describe())
+
+print(sorted(df['sub_grade'].unique()))
+print(sorted(df['grade'].unique()))
