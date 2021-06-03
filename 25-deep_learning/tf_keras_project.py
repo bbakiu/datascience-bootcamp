@@ -44,7 +44,6 @@ feat_info('loan_amnt')
 sns.scatterplot(data=df, x='installment', y='loan_amnt')
 plt.show()
 
-
 sns.boxplot(data=df, x='loan_status', y='loan_amnt')
 plt.show()
 
@@ -52,3 +51,27 @@ print(df.groupby('loan_status')['loan_amnt'].describe())
 
 print(sorted(df['sub_grade'].unique()))
 print(sorted(df['grade'].unique()))
+sub_grade_order = sorted(df['sub_grade'].unique())
+sns.countplot(x='grade', hue='loan_status', data=df)
+plt.show()
+
+sns.countplot(x='sub_grade', hue='loan_status', order=sub_grade_order, data=df, palette='pastel')
+plt.show()
+
+filtered_sub_grade = filter(lambda sub_grade: (sub_grade.startswith('F')) or (sub_grade.startswith('G')),
+                            sub_grade_order)
+
+sns.countplot(x='sub_grade', hue='loan_status', order=filtered_sub_grade,
+              data=df[(df['grade'] == 'F') | (df['grade'] == 'G')], palette='pastel')
+plt.show()
+
+
+def get_loan_repaid(status):
+    if status == 'Fully Paid':
+        return 1
+    return 0
+
+
+df['loan_repaid'] = df['loan_status'].apply(get_loan_repaid)
+# df['loan_repaid'] = df['loan_status'].map({'Fully Paid':1,'Charged Off':0})
+print(df.head())
