@@ -75,3 +75,6 @@ def get_loan_repaid(status):
 df['loan_repaid'] = df['loan_status'].apply(get_loan_repaid)
 # df['loan_repaid'] = df['loan_status'].map({'Fully Paid':1,'Charged Off':0})
 print(df.head())
+
+df.corr()['loan_repaid'].sort_values().drop('loan_repaid').plot(kind='bar')
+plt.show()
