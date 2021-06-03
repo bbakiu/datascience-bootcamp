@@ -83,6 +83,35 @@ print(df.shape[0])
 
 print(df.isnull().sum())
 
-null_series = df.isnull().sum()/len(df)*100
+null_series = df.isnull().sum() / len(df) * 100
 
 print(null_series)
+
+print(feat_info('emp_title'))
+print(feat_info('emp_length'))
+
+print(df['emp_title'].nunique())
+print(df['emp_title'].value_counts())
+
+df.drop('emp_title', inplace=True, axis=1)
+
+# print(sorted(df['emp_length'].unique()))
+emp_length = sorted(df['emp_length'].dropna().unique())
+emp_length_order = [ '< 1 year',
+                     '1 year',
+                     '2 years',
+                     '3 years',
+                     '4 years',
+                     '5 years',
+                     '6 years',
+                     '7 years',
+                     '8 years',
+                     '9 years',
+                     '10+ years']
+print(emp_length)
+
+sns.countplot(x='emp_length', data=df, order=emp_length_order, palette='pastel')
+plt.show()
+
+sns.countplot(x='emp_length', hue='loan_status', data=df, order=emp_length_order, palette='pastel')
+plt.show()
