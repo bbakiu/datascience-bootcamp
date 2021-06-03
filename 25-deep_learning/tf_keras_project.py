@@ -78,3 +78,11 @@ print(df.head())
 
 df.corr()['loan_repaid'].sort_values().drop('loan_repaid').plot(kind='bar')
 plt.show()
+
+print(df.shape[0])
+
+print(df.isnull().sum())
+
+null_series = df.isnull().sum()/len(df)*100
+
+print(null_series)
