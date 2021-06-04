@@ -183,7 +183,12 @@ df = pd.concat([df, dummies], axis=1)
 
 df.drop('issue_d', axis=1, inplace=True)
 
-df['earliest_cr_year'] = df['earliest_cr_line'].apply(lambda date:int(date[-4:]))
-df = df.drop('earliest_cr_line',axis=1)
+df['earliest_cr_year'] = df['earliest_cr_line'].apply(lambda date: int(date[-4:]))
+df.drop('earliest_cr_line', axis=1, inplace=True)
 
 print(df.select_dtypes(['object']).columns)
+
+df.drop('loan_status', axis=1, inplace=True)
+
+X = df.drop('loan_repaid', axis=1).values
+y = df['loan_repaid'].values
