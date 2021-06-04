@@ -162,3 +162,28 @@ df['term'] = df['term'].map({'36 months': 301247, '60 months': 93972})
 df.drop('grade', axis=1, inplace=True)
 subgrade = pd.get_dummies(df['sub_grade'], drop_first=True)
 df = pd.concat([df, subgrade], axis=1)
+
+dummies = pd.get_dummies(df[['verification_status', 'application_type', 'initial_list_status', 'purpose']],
+                         drop_first=True)
+print(dummies)
+df = pd.concat([df, dummies], axis=1)
+df.drop(['verification_status', 'application_type', 'initial_list_status', 'purpose', 'sub_grade'], axis=1,
+        inplace=True)
+
+print(df['home_ownership'].value_counts())
+df['home_ownership'] = df['home_ownership'].replace(['NONE', 'ANY'], 'OTHER')
+dummies = pd.get_dummies(df['home_ownership'], drop_first=True)
+df = df.drop('home_ownership', axis=1)
+df = pd.concat([df, dummies], axis=1)
+df['zip_code'] = df['address'].apply(lambda address: address[-5:])
+
+dummies = pd.get_dummies(df['zip_code'], drop_first=True)
+df = df.drop(['zip_code', 'address'], axis=1)
+df = pd.concat([df, dummies], axis=1)
+
+df.drop('issue_d', axis=1, inplace=True)
+
+df['earliest_cr_year'] = df['earliest_cr_line'].apply(lambda date:int(date[-4:]))
+df = df.drop('earliest_cr_line',axis=1)
+
+print(df.select_dtypes(['object']).columns)
