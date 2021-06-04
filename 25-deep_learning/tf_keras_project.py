@@ -149,5 +149,16 @@ def fill_mort_acc(total_acc, mort_acc):
 df['mort_acc'] = df.apply(lambda x: fill_mort_acc(x['total_acc'], x['mort_acc']), axis=1)
 print(df.isnull().sum())
 
-df.dropna()
+df = df.dropna()
 print(df.isnull().sum())
+
+g = df.columns.to_series().groupby(df.dtypes).groups
+print(g)
+print(df.select_dtypes(['object']).columns)
+
+df['term'] = df['term'].map({'36 months': 301247, '60 months': 93972})
+
+# grade = pd.get_dummies(df['grade'], drop_first=True)
+df.drop('grade', axis=1, inplace=True)
+subgrade = pd.get_dummies(df['sub_grade'], drop_first=True)
+df = pd.concat([df, subgrade], axis=1)
