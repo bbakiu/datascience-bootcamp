@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 
 data_info = pd.read_csv('data/lending_club_info.csv', index_col='LoanStatNew')
 
@@ -192,3 +194,15 @@ df.drop('loan_status', axis=1, inplace=True)
 
 X = df.drop('loan_repaid', axis=1).values
 y = df['loan_repaid'].values
+
+df = df.sample(frac=0.1,random_state=101)
+print(len(df))
+X = df.drop('loan_repaid', axis=1).values
+y = df['loan_repaid'].values
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=101)
+
+scaler = MinMaxScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
