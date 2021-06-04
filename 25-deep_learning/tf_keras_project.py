@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
 
@@ -97,17 +98,17 @@ df.drop('emp_title', inplace=True, axis=1)
 
 # print(sorted(df['emp_length'].unique()))
 emp_length = sorted(df['emp_length'].dropna().unique())
-emp_length_order = [ '< 1 year',
-                     '1 year',
-                     '2 years',
-                     '3 years',
-                     '4 years',
-                     '5 years',
-                     '6 years',
-                     '7 years',
-                     '8 years',
-                     '9 years',
-                     '10+ years']
+emp_length_order = ['< 1 year',
+                    '1 year',
+                    '2 years',
+                    '3 years',
+                    '4 years',
+                    '5 years',
+                    '6 years',
+                    '7 years',
+                    '8 years',
+                    '9 years',
+                    '10+ years']
 print(emp_length)
 
 sns.countplot(x='emp_length', data=df, order=emp_length_order, palette='pastel')
@@ -115,3 +116,38 @@ plt.show()
 
 sns.countplot(x='emp_length', hue='loan_status', data=df, order=emp_length_order, palette='pastel')
 plt.show()
+
+emp_co = df[df['loan_status'] == "Charged Off"].groupby("emp_length").count()['loan_status']
+emp_fp = df[df['loan_status'] == "Fully Paid"].groupby("emp_length").count()['loan_status']
+emp_len = emp_co / emp_fp
+print(emp_len)
+emp_len.plot(kind='bar')
+plt.show()
+df.drop('emp_length', axis=1, inplace=True)
+
+print(df.isnull().sum())
+print(df['title'].unique())
+print(df['purpose'].unique())
+
+df.drop('title', axis=1, inplace=True)
+
+print(feat_info('mort_acc'))
+print(df['mort_acc'].value_counts())
+
+print(df.corr()['mort_acc'])
+print(df.groupby('total_acc').mean()['mort_acc'])
+total_acc_avg = df.groupby('total_acc').mean()['mort_acc']
+
+
+def fill_mort_acc(total_acc, mort_acc):
+    if np.isnan(mort_acc):
+        return total_acc_avg[total_acc]
+    else:
+        return mort_acc
+
+
+df['mort_acc'] = df.apply(lambda x: fill_mort_acc(x['total_acc'], x['mort_acc']), axis=1)
+print(df.isnull().sum())
+
+df.dropna()
+print(df.isnull().sum())
