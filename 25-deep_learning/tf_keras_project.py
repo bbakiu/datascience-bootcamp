@@ -2,8 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.models import Sequential
 
 data_info = pd.read_csv('data/lending_club_info.csv', index_col='LoanStatNew')
 
@@ -195,7 +198,7 @@ df.drop('loan_status', axis=1, inplace=True)
 X = df.drop('loan_repaid', axis=1).values
 y = df['loan_repaid'].values
 
-df = df.sample(frac=0.1,random_state=101)
+df = df.sample(frac=0.1, random_state=101)
 print(len(df))
 X = df.drop('loan_repaid', axis=1).values
 y = df['loan_repaid'].values
@@ -206,3 +209,28 @@ scaler = MinMaxScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
+model = Sequential()
+
+model.add(Dense(78, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(39, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(19, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(1, activation='sigmoid'))
+
+model.compile(loss='binary_crossentropy', optimizer='adam')
+
+# early_stopping = EarlyStopping(monitor='val_loss', mode='min', verbose=3, patience=25)
+history = model.fit(x=X_train, y=y_train, epochs=100, batch_size=256, validation_data=(X_test, y_test), verbose=3)
+
+losses = pd.DataFrame(history.history)
+print(losses)
+losses[['loss', 'val_loss']].plot()
+plt.show()
+
+model.save('data/keras-model.h5')
+
+predictions = model.predict(X_test)
+print(classification_report(y_test, predictions))
+print(confusion_matrix(y_test, predictions))
